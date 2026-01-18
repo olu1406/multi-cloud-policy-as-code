@@ -21,6 +21,9 @@ jobs:
       - name: Terraform fmt
         run: terraform fmt -check -recursive
       - name: Terraform validate (examples)
+        env:
+          ARM_SUBSCRIPTION_ID: 00000000-0000-0000-0000-000000000000
+          ARM_TENANT_ID: 00000000-0000-0000-0000-000000000000
         run: |
           for dir in examples/azure-secure-landing-zone examples/aws-secure-baseline; do
             terraform -chdir=$dir init -backend=false
